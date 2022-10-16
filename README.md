@@ -15,7 +15,7 @@
 - ~~"Completed" list~~
 - Edit option
 - Sort by custom order and date added
-- Import/Export
+- Import/~~Export~~
 - Design/layout rebuild
 - Build a priority system
 - Sort by priority

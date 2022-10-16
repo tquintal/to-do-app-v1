@@ -1,7 +1,8 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import NewToDo from './components/NewToDo';
 import TodoList from './components/ToDoList';
+import ImportExport from './components/ImportExport/ImportExport';
 import { FiGithub } from 'react-icons/fi';
 
 function App() {
@@ -38,6 +39,8 @@ function App() {
   return (
     <div className='main'>
       <div className='content'>
+        <h1>To do app</h1>
+        <ImportExport toDos={toDos} />
         <NewToDo onNewToDo={newToDoHandler} />
         <TodoList toDos={toDos} onUpdate={onUpdateHandler} onDelete={onDeleteHandler} />
       </div>
