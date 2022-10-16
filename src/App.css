@@ -8,10 +8,32 @@
 body {
   background: #1b1b1b;
   color: #ffffff;
+}
 
+:root {
+  color-scheme: dark;
+}
+
+.main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.content {
+  flex: 1 0 auto;
+  padding: 50px;
+}
+
+.footer {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  padding-top: 0px;
+  flex-shrink: 0;
 }
