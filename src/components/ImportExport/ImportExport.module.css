@@ -9,8 +9,8 @@
 .container button {
   all: unset;
   cursor: pointer;
-  background: #ffffff;
-  color: #1b1b1b;
+  background: #3c3c3c;
+  color: #ffffff;
   display: flex;
   justify-content: center;
   padding: 10px;
