@@ -3,7 +3,7 @@ import StorageContext from '../../storage/storage-context';
 import classes from './NewToDo.module.css';
 import InputButton from '../UI/InputButton';
 
-const NewToDo = () => {
+function NewToDo() {
     const [toDo, setToDo] = useState('');
 
     const storageContext = useContext(StorageContext);

@@ -3,7 +3,7 @@ import StorageContext from '../../storage/storage-context';
 import classes from './ToDoList.module.css';
 // import { AiOutlineDelete } from 'react-icons/ai';
 
-const ToDoList = () => {
+function ToDoList() {
     const storageContext = useContext(StorageContext);
 
     const onChangeHandler = event => {

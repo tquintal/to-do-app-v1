@@ -1,0 +1,11 @@
+.footer {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  padding-top: 0px;
+  flex-shrink: 0;
+}

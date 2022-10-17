@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
+import ImportExport from './components/ImportExport/ImportExport';
 import NewToDo from './components/NewToDo/NewToDo';
 import TodoList from './components/ToDoList/ToDoList';
-import ImportExport from './components/ImportExport/ImportExport';
-import { FiGithub } from 'react-icons/fi';
+import Footer from './components/Footer/Footer';
 
 function App() {
-
   return (
     <div className='main'>
       <div className='content'>
@@ -15,7 +14,7 @@ function App() {
         <NewToDo />
         <TodoList />
       </div>
-      <a href='https://github.com/tquintal/' target='_blank' rel='noreferrer' className='footer'><FiGithub /> tquintal</a>
+      <Footer />
     </div>
   );
 };

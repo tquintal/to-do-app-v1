@@ -3,7 +3,7 @@ import StorageContext from '../../storage/storage-context';
 import classes from './ImportExport.module.css';
 import { CSVLink } from 'react-csv';
 
-const ImportExport = () => {
+function ImportExport() {
     const storageContext = useContext(StorageContext);
 
     const onClickHandler = () => {
