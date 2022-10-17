@@ -1,5 +1,7 @@
 # To Do React App
 
+My recent react learning playground 🤓
+
 ## Learning goals:
 
 - React basics
