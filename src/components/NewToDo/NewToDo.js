@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import StorageContext from '../../storage/storage-context';
 import classes from './NewToDo.module.css';
 import InputButton from '../UI/InputButton';
 
-const NewToDo = props => {
+const NewToDo = () => {
     const [toDo, setToDo] = useState('');
+
+    const storageContext = useContext(StorageContext);
 
     const onChangeHandler = event => {
         setToDo(event.target.value);
@@ -12,7 +15,7 @@ const NewToDo = props => {
     const onSubmitHandler = event => {
         event.preventDefault();
         if (toDo.trim().length === 0) return;
-        props.onNewToDo(toDo);
+        storageContext.onAdd(toDo);
         setToDo('');
     };
 

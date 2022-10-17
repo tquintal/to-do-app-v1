@@ -1,19 +1,21 @@
-import React, { Fragment } from 'react';
+import React, { useContext, Fragment } from 'react';
+import StorageContext from '../../storage/storage-context';
 import classes from './ToDoList.module.css';
 // import { AiOutlineDelete } from 'react-icons/ai';
 
-const ToDoList = props => {
+const ToDoList = () => {
+    const storageContext = useContext(StorageContext);
 
     const onChangeHandler = event => {
-        props.onUpdate(event.target.attributes.todoid.value);
+        storageContext.onComplete(event.target.attributes.todoid.value);
     };
 
     const onInputChangeHandler = event => {
-        props.onEdit(event.target.attributes.todoid.value, event.target.value);
+        storageContext.onEdit(event.target.attributes.todoid.value, event.target.value);
     };
 
     const onDeleteHandler = event => {
-        props.onDelete(event.target.attributes.todoid.value);
+        storageContext.onDelete(event.target.attributes.todoid.value);
     };
 
     return (
@@ -22,7 +24,7 @@ const ToDoList = props => {
                 <p>To do:</p>
                 <ul>
                     {
-                        props.toDos.length > 0 && props.toDos.filter(toDo => !toDo.completed).map(toDo =>
+                        storageContext.toDos.length > 0 && storageContext.toDos.filter(toDo => !toDo.completed).map(toDo =>
                             <li key={toDo.id}>
                                 <div className={classes['to-do-list-item-left']}>
                                     <input type='checkbox' onChange={onChangeHandler} todoid={toDo.id} checked={toDo.completed} title='checkbox' />
@@ -33,15 +35,15 @@ const ToDoList = props => {
                         )
                     }
                 </ul>
-                {props.toDos.filter(toDo => !toDo.completed).length === 0 && <p className={classes.noTasks}>All tasks completed</p>}
+                {storageContext.toDos.filter(toDo => !toDo.completed).length === 0 && <p className={classes.noTasks}>All tasks completed</p>}
             </div>
             {
-                props.toDos.filter(toDo => toDo.completed).length > 0 &&
+                storageContext.toDos.filter(toDo => toDo.completed).length > 0 &&
                 <div className={classes['to-do-list-completed']}>
                     <p>Completed:</p>
                     <ul>
                         {
-                            props.toDos.filter(toDo => toDo.completed).map(toDo =>
+                            storageContext.toDos.filter(toDo => toDo.completed).map(toDo =>
                                 <li key={toDo.id}>
                                     <div className={classes['to-do-list-item-left']}>
                                         <input type='checkbox' onChange={onChangeHandler} todoid={toDo.id} content={toDo.content} checked={toDo.completed} title='checkbox' />

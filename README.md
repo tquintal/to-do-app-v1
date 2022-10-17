@@ -8,6 +8,7 @@
 - Styling react components
 - Build reusable components
 - Build dynamic components - handle data through props
+- Context API
 
 ## Future goals:
 
