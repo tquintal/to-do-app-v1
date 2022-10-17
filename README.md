@@ -13,7 +13,7 @@
 
 - ~~Delete option~~
 - ~~"Completed" list~~
-- Edit option
+- ~~Edit option~~
 - Sort by custom order and date added
 - Import/~~Export~~
 - Design/layout rebuild

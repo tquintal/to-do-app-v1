@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classes from './NewToDo.module.css';
-import InputButton from './UI/InputButton';
+import InputButton from '../UI/InputButton';
 
 const NewToDo = props => {
     const [toDo, setToDo] = useState('');

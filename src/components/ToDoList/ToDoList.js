@@ -3,8 +3,13 @@ import classes from './ToDoList.module.css';
 // import { AiOutlineDelete } from 'react-icons/ai';
 
 const ToDoList = props => {
+
     const onChangeHandler = event => {
         props.onUpdate(event.target.attributes.todoid.value);
+    };
+
+    const onInputChangeHandler = event => {
+        props.onEdit(event.target.attributes.todoid.value, event.target.value);
     };
 
     const onDeleteHandler = event => {
@@ -21,7 +26,7 @@ const ToDoList = props => {
                             <li key={toDo.id}>
                                 <div className={classes['to-do-list-item-left']}>
                                     <input type='checkbox' onChange={onChangeHandler} todoid={toDo.id} checked={toDo.completed} title='checkbox' />
-                                    {toDo.content}
+                                    <input type='text' title='todo' defaultValue={toDo.content} onChange={onInputChangeHandler} todoid={toDo.id} className={classes['edit-todo-input']} />
                                 </div>
                                 <button onClick={onDeleteHandler} title='delete-button' todoid={toDo.id}>Delete</button>
                             </li>
