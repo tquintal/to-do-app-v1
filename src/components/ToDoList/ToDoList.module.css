@@ -3,6 +3,13 @@
   font-size: 20px;
 }
 
+@media only screen and (max-width: 800px) {
+  .to-do-list p,
+  .to-do-list-completed p {
+    font-size: 16px;
+  }
+}
+
 .to-do-list ul,
 .to-do-list-completed ul {
   display: flex;
@@ -16,6 +23,7 @@
   background: #3c3c3c;
   color: #ffffff;
   display: flex;
+  gap: 15px;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
@@ -31,6 +39,7 @@
 .to-do-list-item-left {
   display: flex;
   gap: 15px;
+  width: 100%;
 }
 
 .edit-todo-input {
@@ -39,6 +48,7 @@
   padding: 5px;
   background-color: #5c5c5c;
   color: #ffffff;
+  width: 100%;
 }
 
 .to-do-list button,

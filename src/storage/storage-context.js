@@ -37,7 +37,6 @@ export const StorageContextProvider = props => {
 
     // EDIT TODO
     const editHandler = (id, toDoContent) => {
-        console.log(id, toDoContent);
         setToDos(prevToDos => {
             const updatedToDos = [...prevToDos].map(toDo => {
                 if (toDo.id === id) return { ...toDo, content: toDoContent };

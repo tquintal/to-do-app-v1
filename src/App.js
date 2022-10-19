@@ -10,10 +10,10 @@ function App() {
     <div className='main'>
       <div className='content'>
         <h1>To do app</h1>
-        <ImportExport />
         <NewToDo />
         <TodoList />
       </div>
+      <ImportExport />
       <Footer />
     </div>
   );
