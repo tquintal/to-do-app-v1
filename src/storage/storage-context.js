@@ -17,6 +17,7 @@ export const StorageContextProvider = props => {
         const appVersion = '1.0.14';
         const storageVersion = JSON.parse(localStorage.getItem('Version')) || '';
         if (storageVersion !== appVersion) {
+            console.log('App cleared... 🧹');
             localStorage.removeItem('ToDos');
             localStorage.setItem('Version', JSON.stringify(appVersion));
             setToDos([]);
@@ -61,9 +62,17 @@ export const StorageContextProvider = props => {
 
     // DELETE TODO
     const deleteHandler = id => {
-        const updatedToDos = toDos.filter(todo => todo.id !== id);
-        setToDos(updatedToDos);
-        localStorage.setItem('ToDos', JSON.stringify(updatedToDos));
+        setToDos(prevToDos => {
+            const updatedToDos = [...prevToDos].filter(toDo => toDo.id !== id);
+            localStorage.setItem('ToDos', JSON.stringify(updatedToDos));
+            return updatedToDos
+        });
+
+        // Idk why but it feels better this way ^
+
+        // const updatedToDos = toDos.filter(todo => todo.id !== id);
+        // setToDos(updatedToDos);
+        // localStorage.setItem('ToDos', JSON.stringify(updatedToDos));
     };
 
     // DELETE ALL TODOS
