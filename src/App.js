@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.css';
+import React, { Fragment } from 'react';
+import classes from './App.module.css';
 import ImportExport from './components/ImportExport/ImportExport';
 import NewToDo from './components/NewToDo/NewToDo';
 import TodoList from './components/ToDoList/ToDoList';
@@ -7,15 +7,16 @@ import Footer from './components/Footer/Footer';
 
 function App() {
   return (
-    <div className='main'>
-      <div className='content'>
-        <h1>To do app</h1>
-        <NewToDo />
-        <TodoList />
-      </div>
-      <ImportExport />
+    <Fragment>
+      <main>
+        <section className={classes['section-1']}>
+          <NewToDo />
+          <TodoList />
+          <ImportExport />
+        </section>
+      </main>
       <Footer />
-    </div>
+    </Fragment>
   );
 };
 

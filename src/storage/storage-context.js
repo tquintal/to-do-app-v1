@@ -14,7 +14,7 @@ export const StorageContextProvider = props => {
 
     // CLEARS TODOS ON VERSION CHANGE
     useEffect(() => {
-        const appVersion = '1.0.13';
+        const appVersion = '1.0.14';
         const storageVersion = JSON.parse(localStorage.getItem('Version')) || '';
         if (storageVersion !== appVersion) {
             localStorage.removeItem('ToDos');

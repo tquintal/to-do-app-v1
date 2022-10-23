@@ -1,87 +1,57 @@
-.to-do-list {
+.to-do-list-container {
+}
+
+.sort-by-container {
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  justify-content: space-between;
 }
 
-.to-do-list p,
-.to-do-list-completed p {
-  font-size: 20px;
-}
-
-.sort-by {
+.sort-by-item {
   display: flex;
   gap: 5px;
-}
-
-.sort-by input,
-.sort-by label {
-  cursor: pointer;
+  align-items: center;
 }
 
 @media only screen and (max-width: 800px) {
-  .to-do-list p,
-  .to-do-list-completed p {
-    font-size: 16px;
+  .sort-by-container {
+    flex-direction: column;
   }
 }
 
-.to-do-list ul,
-.to-do-list-completed ul {
+.to-do-list-container {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width: 100%;
 }
 
-.to-do-list li,
-.to-do-list-completed li {
-  list-style-type: none;
-  background: #3c3c3c;
-  color: #ffffff;
+.to-do-list-item-container {
   display: flex;
-  gap: 15px;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.to-do-list-completed li {
+  gap: 5px;
+  width: 100%;
   background: #3c3c3c;
-  color: #7a7a7a;
+  padding: 10px;
 }
 
 .to-do-list-item-left {
   display: flex;
-  gap: 15px;
-  width: 100%;
+  align-items: center;
+  gap: 10px;
+}
+
+.no-tasks {
+  color: #686868;
 }
 
 .edit-todo-input {
   all: unset;
-  width: 76%;
-  padding: 5px;
-  /* background-color: #5c5c5c; */
-  color: #ffffff;
+  background: #505050;
+  padding-left: 5px;
   width: 100%;
 }
 
-.to-do-list button,
-.to-do-list-completed button {
+.delete-button {
   all: unset;
-  cursor: pointer;
-  display: flex;
-  color: #7a7a7a;
-}
-
-.to-do-list-item-left button {
-  all: unset;
-  cursor: pointer;
-  color: #7a7a7a;
-  padding-right: 15px;
-}
-
-.noTasks {
-  color: #7a7a7a;
 }

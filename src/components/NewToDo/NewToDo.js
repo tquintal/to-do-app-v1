@@ -26,17 +26,18 @@ function NewToDo() {
     };
 
     return (
-        <form onSubmit={onSubmitHandler} className={classes.newToDoForm}>
+        <form onSubmit={onSubmitHandler} className={classes['new-to-do-container']}>
             <label htmlFor='todo'>Add to do:</label>
-            <div className={classes.inputContainer}>
+            <div className={classes['input-container']}>
                 <input
                     id='todo'
                     type='text'
                     value={toDo}
                     onChange={onChangeHandler}
+                    className={classes['new-to-do-input']}
                 />
-                <InputButton onClick={onPriorityHandler} className={`${classes['button']} ${highPriority && classes['priority-button-active']}`}>❗</InputButton>
-                <InputButton type='submit' className={classes['button']}>Add</InputButton>
+                <InputButton onClick={onPriorityHandler} className={`${classes['priority-button']} ${highPriority && classes['priority-button-active']}`}>❗</InputButton>
+                <InputButton type='submit' className={classes['submit-button']}>Add</InputButton>
             </div>
         </form>
     );

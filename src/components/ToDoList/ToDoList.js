@@ -51,51 +51,64 @@ function ToDoList() {
         storageContext.onDelete(id);
     };
 
+    const HighPriority = props => {
+        return props.highPriority && <p>❗</p>
+    };
+
+    const DeleteButton = props => {
+        return <button onClick={onDeleteHandler} title='delete-button' todoid={props.todoid} className={classes['delete-button']}>Delete</button>;
+    };
+
     return (
         <Fragment>
-            <div className={classes['to-do-list']}>
-                <p>To do:</p>
+            <div className={classes['to-do-list-container']}>
                 <div>
                     <p>Sort by:</p>
-                    <div className={classes['sort-by']}>
-                        <input type='radio' name='radio-button' defaultChecked={true} onChange={onSortByDefaultHandler} id='default' />
-                        <label htmlFor='default'>Default</label>
-                        <input type='radio' name='radio-button' onChange={onSortByDateAddedHandler} id='date' />
-                        <label htmlFor='date'>Recently added</label>
-                        <input type='radio' name='radio-button' onChange={onSortByPriorityHandler} id='priority' />
-                        <label htmlFor='priority'>Priority</label>
+                    <div className={classes['sort-by-container']}>
+                        <div className={classes['sort-by-item']}>
+                            <input type='radio' name='radio-button' defaultChecked={true} onChange={onSortByDefaultHandler} id='default' />
+                            <label htmlFor='default'>Default</label>
+                        </div>
+                        <div className={classes['sort-by-item']}>
+                            <input type='radio' name='radio-button' onChange={onSortByDateAddedHandler} id='date' />
+                            <label htmlFor='date'>Recently added</label>
+                        </div>
+                        <div className={classes['sort-by-item']}>
+                            <input type='radio' name='radio-button' onChange={onSortByPriorityHandler} id='priority' />
+                            <label htmlFor='priority'>Priority</label>
+                        </div>
                     </div>
                 </div>
-                <ul>
+                <ul className={classes['to-do-list-container']}>
                     {
                         storageContext.toDos.length > 0 && getSortedToDos().filter(toDo => !toDo.completed).map(toDo =>
-                            <li key={toDo.id}>
+                            <li key={toDo.id} className={classes['to-do-list-item-container']}>
                                 <div className={classes['to-do-list-item-left']}>
                                     <input type='checkbox' onChange={onChangeHandler} todoid={toDo.id} checked={toDo.completed} title='checkbox' />
                                     <input type='text' title='todo' defaultValue={toDo.content} onChange={onInputChangeHandler} todoid={toDo.id} className={classes['edit-todo-input']} />
                                 </div>
-                                {toDo.highPriority && <p>❗</p>}
-                                <button onClick={onDeleteHandler} title='delete-button' todoid={toDo.id}>Delete</button>
+                                <HighPriority highPriority={toDo.highPriority} />
+                                <DeleteButton todoid={toDo.id}></DeleteButton>
                             </li>
                         )
                     }
                 </ul>
-                {storageContext.toDos.filter(toDo => !toDo.completed).length === 0 && <p className={classes.noTasks}>All tasks completed</p>}
+                {storageContext.toDos.filter(toDo => !toDo.completed).length === 0 && <p className={classes['no-tasks']}>All tasks completed</p>}
             </div>
             {
                 storageContext.toDos.filter(toDo => toDo.completed).length > 0 &&
-                <div className={classes['to-do-list-completed']}>
+                <div>
                     <p>Completed:</p>
-                    <ul>
+                    <ul className={classes['to-do-list-container']}>
                         {
                             getSortedToDos().filter(toDo => toDo.completed).map(toDo =>
-                                <li key={toDo.id}>
+                                <li key={toDo.id} className={classes['to-do-list-item-container']}>
                                     <div className={classes['to-do-list-item-left']}>
-                                        <input type='checkbox' onChange={onChangeHandler} todoid={toDo.id} content={toDo.content} checked={toDo.completed} title='checkbox' />
-                                        {toDo.content}
+                                        <input type='checkbox' onChange={onChangeHandler} todoid={toDo.id} checked={toDo.completed} title='checkbox' />
+                                        <input type='text' title='todo' defaultValue={toDo.content} onChange={onInputChangeHandler} todoid={toDo.id} className={classes['edit-todo-input']} />
                                     </div>
-                                    {toDo.highPriority && <p>❗</p>}
-                                    <button onClick={onDeleteHandler} title='delete-button' todoid={toDo.id}>Delete</button>
+                                    <HighPriority highPriority={toDo.highPriority} />
+                                    <DeleteButton todoid={toDo.id}></DeleteButton>
                                 </li>
                             )
                         }

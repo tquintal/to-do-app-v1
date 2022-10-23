@@ -15,8 +15,8 @@ function ImportExport() {
     };
 
     return (
-        <div className={classes['container']}>
-            <button onClick={onDeleteAllHandler}>Remove all</button>
+        <div className={classes['import-export-container']}>
+            <button onClick={onDeleteAllHandler}>Clear</button>
             <CSVLink data={storageContext.toDos}>Export</CSVLink>
             {/* <div className={classes['import-container']}>
                 <label htmlFor='upload'>Import:</label>

@@ -1,16 +1,17 @@
-.container {
+.import-export-container {
   display: flex;
   gap: 5px;
-  justify-content: space-between;
+  padding-top: 5px;
 }
 
-.container a,
-.container button {
+.import-export-container button,
+.import-export-container a {
   all: unset;
-  cursor: pointer;
-  background: #3c3c3c;
-  color: #ffffff;
   display: flex;
   justify-content: center;
+  align-items: center;
+  background: #3c3c3c;
   padding: 10px;
+  cursor: pointer;
+  width: 100%;
 }

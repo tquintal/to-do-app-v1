@@ -1,37 +1,32 @@
-.inputContainer {
+.new-to-do-container {
+}
+
+.input-container {
   display: flex;
   gap: 5px;
+  height: 35px;
 }
 
-.newToDoForm label {
-  font-size: 20px;
-}
-
-@media only screen and (max-width: 800px) {
-  .newToDoForm label {
-    font-size: 16px;
-  }
-}
-
-.newToDoForm input {
+.priority-button,
+.submit-button {
   all: unset;
   background: #ffffff;
   color: #1b1b1b;
-  text-align: left;
-  padding: 10px;
-  padding-left: 20px;
-  width: 100%;
-}
-
-.button {
-  all: unset;
+  padding-left: 10px;
+  padding-right: 10px;
   cursor: pointer;
-  background: #ffffff;
-  color: #1b1b1b;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .priority-button-active {
-  background: #c0c0c0;
-  color: #ffffff;
+  background: #dddddd;
+  /* color: #ffffff; */
+}
+
+.new-to-do-input {
+  all: unset;
+  width: 100%;
+  padding-left: 10px;
+  background: #ffffff;
+  color: #1b1b1b;
 }
