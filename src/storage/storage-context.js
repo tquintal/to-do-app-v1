@@ -77,8 +77,14 @@ export const StorageContextProvider = props => {
 
     // DELETE ALL TODOS
     const deleteAllHander = () => {
-        setToDos([]);
-        localStorage.removeItem('ToDos');
+        setToDos(() => {
+            const updatedToDos = [];
+            localStorage.removeItem('ToDos');
+            return updatedToDos;
+        });
+
+        // setToDos([]);
+        // localStorage.removeItem('ToDos');
     };
 
     return (

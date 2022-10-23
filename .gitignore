@@ -40,3 +40,5 @@ yarn-error.log*
 /.changelog
 .npm/
 dist
+
+GitScript.sh
