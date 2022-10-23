@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const StorageContext = React.createContext({
     toDos: [],
@@ -10,6 +10,17 @@ const StorageContext = React.createContext({
 
 export const StorageContextProvider = props => {
     const [toDos, setToDos] = useState(JSON.parse(localStorage.getItem('ToDos')) || []);
+
+    // CLEARS TODOS ON VERSION CHANGE
+    useEffect(() => {
+        const appVersion = '1.0.12';
+        const storageVersion = JSON.parse(localStorage.getItem('Version')) || '';
+        if (storageVersion !== appVersion) {
+            localStorage.removeItem('ToDos');
+            localStorage.setItem('Version', JSON.stringify(appVersion));
+            setToDos([]);
+        };
+    }, []);
 
     // NEW TODO
     const addHandler = (toDo, highPriority) => {
