@@ -4,7 +4,7 @@ import classes from './InputButton.module.css';
 const InputButton = props => {
     return (
         <button
-            className={classes.button}
+            className={props.className}
             type={props.type || 'button'}
             onClick={props.onClick}
         >

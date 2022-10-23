@@ -1,6 +1,22 @@
+.to-do-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 .to-do-list p,
 .to-do-list-completed p {
   font-size: 20px;
+}
+
+.sort-by {
+  display: flex;
+  gap: 5px;
+}
+
+.sort-by input,
+.sort-by label {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 800px) {

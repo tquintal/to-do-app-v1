@@ -23,10 +23,15 @@
   width: 100%;
 }
 
-.newToDoForm button {
+.button {
   all: unset;
   cursor: pointer;
   background: #ffffff;
   color: #1b1b1b;
   padding: 10px;
+}
+
+.priority-button-active {
+  background: #c0c0c0;
+  color: #ffffff;
 }

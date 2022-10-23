@@ -17,7 +17,7 @@ My recent react learning playground 🤓
 - ~~Delete option~~
 - ~~"Completed" list~~
 - ~~Edit option~~
-- Sort by custom order and date added
+- Sort by custom order and ~~date added~~
 - Import/~~Export~~
 - Design/layout rebuild
 - Build a priority system

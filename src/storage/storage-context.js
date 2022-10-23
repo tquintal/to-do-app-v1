@@ -12,10 +12,11 @@ export const StorageContextProvider = props => {
     const [toDos, setToDos] = useState(JSON.parse(localStorage.getItem('ToDos')) || []);
 
     // NEW TODO
-    const addHandler = toDo => {
+    const addHandler = (toDo) => {
         setToDos(prevToDos => {
             const updatedToDos = [...prevToDos];
-            updatedToDos.push({ content: toDo, id: Math.random().toString(), completed: false });
+            const date = new Date();
+            updatedToDos.push({ id: Math.random().toString(), content: toDo, created: date, completed: false });
             localStorage.setItem('ToDos', JSON.stringify(updatedToDos));
             return updatedToDos;
         });
