@@ -10,6 +10,12 @@
   display: flex;
   gap: 5px;
   align-items: center;
+  cursor: pointer;
+}
+
+.sort-by-item input,
+.sort-by-item label {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 800px) {
@@ -54,4 +60,5 @@
 
 .delete-button {
   all: unset;
+  cursor: pointer;
 }
