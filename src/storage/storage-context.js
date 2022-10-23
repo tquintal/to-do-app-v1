@@ -5,7 +5,8 @@ const StorageContext = React.createContext({
     onAdd: () => { },
     onComplete: () => { },
     onEdit: () => { },
-    onDelete: () => { }
+    onDelete: () => { },
+    onDeleteAll: () => { }
 });
 
 export const StorageContextProvider = props => {
@@ -13,7 +14,7 @@ export const StorageContextProvider = props => {
 
     // CLEARS TODOS ON VERSION CHANGE
     useEffect(() => {
-        const appVersion = '1.0.12';
+        const appVersion = '1.0.13';
         const storageVersion = JSON.parse(localStorage.getItem('Version')) || '';
         if (storageVersion !== appVersion) {
             localStorage.removeItem('ToDos');
@@ -65,6 +66,13 @@ export const StorageContextProvider = props => {
         localStorage.setItem('ToDos', JSON.stringify(updatedToDos));
     };
 
+    // DELETE ALL TODOS
+    const deleteAllHander = () => {
+        setToDos([]);
+        localStorage.removeItem('ToDos');
+        console.log('Hello world');
+    };
+
     return (
         <StorageContext.Provider
             value={{
@@ -72,7 +80,8 @@ export const StorageContextProvider = props => {
                 onAdd: addHandler,
                 onComplete: completeHandler,
                 onEdit: editHandler,
-                onDelete: deleteHandler
+                onDelete: deleteHandler,
+                onDeleteAll: deleteAllHander
             }}
         >
             {props.children}

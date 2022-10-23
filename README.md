@@ -17,10 +17,13 @@ My recent react learning playground 🤓
 - ~~Delete option~~
 - ~~"Completed" list~~
 - ~~Edit option~~
-- Sort by custom order and ~~date added~~
-- Import/~~Export~~
-- Design/layout rebuild
+- ~~Remove all~~
+- ~~Sort by recent added~~
+- ~~Sort by date added~~
 - ~~Build a priority system~~
 - ~~Sort by priority~~
+- Sort by custom order
+- Import/~~Export~~
+- Design/layout rebuild
 - Build a category system
 - Group by category
