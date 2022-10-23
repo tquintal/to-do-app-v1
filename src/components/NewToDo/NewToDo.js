@@ -17,13 +17,12 @@ function NewToDo() {
         setHighPriority(prevState => !prevState);
     };
 
-    console.log(highPriority);
-
     const onSubmitHandler = event => {
         event.preventDefault();
         if (toDo.trim().length === 0) return;
-        storageContext.onAdd(toDo);
+        storageContext.onAdd(toDo, highPriority);
         setToDo('');
+        setHighPriority(false);
     };
 
     return (
@@ -44,6 +43,3 @@ function NewToDo() {
 };
 
 export default NewToDo;
-
-// {`${classes['priority-button']} ${highPriority} && ${classes['priority-button-active']}`}
-// className={classes[]}

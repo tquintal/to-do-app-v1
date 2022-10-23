@@ -20,7 +20,7 @@ My recent react learning playground 🤓
 - Sort by custom order and ~~date added~~
 - Import/~~Export~~
 - Design/layout rebuild
-- Build a priority system
-- Sort by priority
+- ~~Build a priority system~~
+- ~~Sort by priority~~
 - Build a category system
 - Group by category

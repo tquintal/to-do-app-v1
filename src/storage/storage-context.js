@@ -12,15 +12,14 @@ export const StorageContextProvider = props => {
     const [toDos, setToDos] = useState(JSON.parse(localStorage.getItem('ToDos')) || []);
 
     // NEW TODO
-    const addHandler = (toDo) => {
+    const addHandler = (toDo, highPriority) => {
         setToDos(prevToDos => {
             const updatedToDos = [...prevToDos];
             const date = new Date();
-            updatedToDos.push({ id: Math.random().toString(), content: toDo, created: date, completed: false });
+            updatedToDos.push({ id: Math.random().toString(), content: toDo, created: date, highPriority: highPriority, completed: false });
             localStorage.setItem('ToDos', JSON.stringify(updatedToDos));
             return updatedToDos;
         });
-        console.log(`To do added ✅\nToDo: ${toDo}`);
     };
 
     // COMPLETE TODO

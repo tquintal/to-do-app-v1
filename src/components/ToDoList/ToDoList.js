@@ -8,37 +8,47 @@ function ToDoList() {
 
     const [sortBy, setSortBy] = useState('default');
 
-    const onChangeHandler = event => {
-        storageContext.onComplete(event.target.attributes.todoid.value);
-    };
+    const onSortByDefaultHandler = () => { setSortBy('default'); };
 
-    const onInputChangeHandler = event => {
-        storageContext.onEdit(event.target.attributes.todoid.value, event.target.value);
-    };
+    const onSortByDateAddedHandler = () => { setSortBy('date'); };
 
-    const onDeleteHandler = event => {
-        storageContext.onDelete(event.target.attributes.todoid.value);
-    };
-
-    const onSortByDefaultHandler = () => {
-        setSortBy('default');
-    };
-
-    const onSortByDateAddedHandler = () => {
-        setSortBy('date');
-    };
+    const onSortByPriorityHandler = () => { setSortBy('priority') };
 
     const getSortedToDos = () => {
         if (sortBy === 'default')
             return storageContext.toDos;
 
         if (sortBy === 'date') {
-            const sortedToDos = storageContext.toDos.concat().map(toDo => {
+            const sortByDate = storageContext.toDos.concat().map(toDo => {
                 return { ...toDo, created: new Date(toDo.created) } // Translate string to date
             }).sort((a, b) => b.created - a.created);
 
-            return sortedToDos;
+            return sortByDate;
         };
+
+        if (sortBy === 'priority') {
+            const sortByPriority = [
+                ...storageContext.toDos.concat().filter(toDo => toDo.highPriority),
+                ...storageContext.toDos.concat().filter(toDo => !toDo.highPriority)
+            ];
+            return sortByPriority;
+        };
+    };
+
+    const onChangeHandler = event => {
+        const id = event.target.attributes.todoid.value;
+        storageContext.onComplete(id);
+    };
+
+    const onInputChangeHandler = event => {
+        const id = event.target.attributes.todoid.value;
+        const content = event.target.value;
+        storageContext.onEdit(id, content);
+    };
+
+    const onDeleteHandler = event => {
+        const id = event.target.attributes.todoid.value;
+        storageContext.onDelete(id);
     };
 
     return (
@@ -52,6 +62,8 @@ function ToDoList() {
                         <label htmlFor='default'>Default</label>
                         <input type='radio' name='radio-button' onChange={onSortByDateAddedHandler} id='date' />
                         <label htmlFor='date'>Recently added</label>
+                        <input type='radio' name='radio-button' onChange={onSortByPriorityHandler} id='priority' />
+                        <label htmlFor='priority'>Priority</label>
                     </div>
                 </div>
                 <ul>
@@ -62,6 +74,7 @@ function ToDoList() {
                                     <input type='checkbox' onChange={onChangeHandler} todoid={toDo.id} checked={toDo.completed} title='checkbox' />
                                     <input type='text' title='todo' defaultValue={toDo.content} onChange={onInputChangeHandler} todoid={toDo.id} className={classes['edit-todo-input']} />
                                 </div>
+                                {toDo.highPriority && <p>❗</p>}
                                 <button onClick={onDeleteHandler} title='delete-button' todoid={toDo.id}>Delete</button>
                             </li>
                         )
@@ -81,6 +94,7 @@ function ToDoList() {
                                         <input type='checkbox' onChange={onChangeHandler} todoid={toDo.id} content={toDo.content} checked={toDo.completed} title='checkbox' />
                                         {toDo.content}
                                     </div>
+                                    {toDo.highPriority && <p>❗</p>}
                                     <button onClick={onDeleteHandler} title='delete-button' todoid={toDo.id}>Delete</button>
                                 </li>
                             )
