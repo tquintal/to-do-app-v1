@@ -6,6 +6,12 @@
   justify-content: space-between;
 }
 
+@media only screen and (max-width: 800px) {
+  .sort-by-container {
+    flex-direction: column;
+  }
+}
+
 .sort-by-item {
   display: flex;
   gap: 5px;
@@ -18,10 +24,9 @@
   cursor: pointer;
 }
 
-@media only screen and (max-width: 800px) {
-  .sort-by-container {
-    flex-direction: column;
-  }
+.sort-by-category-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .to-do-list-container {

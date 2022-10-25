@@ -2,36 +2,66 @@ import React, { useEffect, useState } from 'react';
 
 const StorageContext = React.createContext({
     toDos: [],
+    categories: [],
     onAdd: () => { },
+    onCategoryAdd: () => { },
     onComplete: () => { },
     onEdit: () => { },
     onDelete: () => { },
-    onDeleteAll: () => { }
+    onDeleteAll: () => { },
+    onLoadTestToDos: () => { }
 });
 
 export const StorageContextProvider = props => {
     const [toDos, setToDos] = useState(JSON.parse(localStorage.getItem('ToDos')) || []);
+    const [categories, setCategories] = useState(JSON.parse(localStorage.getItem('Categories')) || ['none']);
+
+    // Load test values
+    const loadTestToDosHandler = testToDos => {
+        setToDos(() => {
+            const updatedToDos = testToDos.concat();
+            localStorage.setItem('ToDos', JSON.stringify(updatedToDos));
+            return updatedToDos;
+        });
+
+        setCategories(() => {
+            const updatedCat = ['none', 'one', 'two', 'three', 'four'];
+            localStorage.setItem('Categories', JSON.stringify(updatedCat));
+            return updatedCat;
+        });
+    };
 
     // CLEARS TODOS ON VERSION CHANGE
     useEffect(() => {
         const appVersion = '1.0.14';
         const storageVersion = JSON.parse(localStorage.getItem('Version')) || '';
         if (storageVersion !== appVersion) {
-            console.log('App cleared... 🧹');
             localStorage.removeItem('ToDos');
             localStorage.setItem('Version', JSON.stringify(appVersion));
             setToDos([]);
+            localStorage.removeItem('Categories');
+            setCategories(['None']);
         };
     }, []);
 
     // NEW TODO
-    const addHandler = (toDo, highPriority) => {
+    const addHandler = (toDo, category, highPriority) => {
         setToDos(prevToDos => {
             const updatedToDos = [...prevToDos];
-            const date = new Date();
-            updatedToDos.push({ id: Math.random().toString(), content: toDo, created: date, highPriority: highPriority, completed: false });
+            updatedToDos.push({ id: Math.random().toString(), content: toDo, created: new Date(), category: category, highPriority: highPriority, completed: false });
             localStorage.setItem('ToDos', JSON.stringify(updatedToDos));
             return updatedToDos;
+        });
+    };
+
+    // NEW CATEGORY
+    const addCategoryHandler = (newCategory) => {
+        setCategories(prevCat => {
+            const updatedCat = [...prevCat];
+            updatedCat.push(newCategory);
+            localStorage.setItem('Categories', JSON.stringify(updatedCat));
+            console.log(updatedCat, localStorage.getItem('Categories'));
+            return updatedCat;
         });
     };
 
@@ -83,6 +113,12 @@ export const StorageContextProvider = props => {
             return updatedToDos;
         });
 
+        setCategories(() => {
+            const updatedCat = ['none'];
+            localStorage.setItem('Categories', JSON.stringify(updatedCat));
+            return updatedCat;
+        })
+
         // setToDos([]);
         // localStorage.removeItem('ToDos');
     };
@@ -91,11 +127,14 @@ export const StorageContextProvider = props => {
         <StorageContext.Provider
             value={{
                 toDos: toDos,
+                categories: categories,
                 onAdd: addHandler,
+                onCategoryAdd: addCategoryHandler,
                 onComplete: completeHandler,
                 onEdit: editHandler,
                 onDelete: deleteHandler,
-                onDeleteAll: deleteAllHander
+                onDeleteAll: deleteAllHander,
+                onLoadTestToDos: loadTestToDosHandler
             }}
         >
             {props.children}

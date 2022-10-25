@@ -1,12 +1,26 @@
 .new-to-do-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .input-container {
   display: flex;
-  gap: 5px;
+  /* gap: 5px; */
   height: 35px;
 }
 
+.options-container {
+  justify-content: space-between;
+  display: flex;
+  gap: 5px;
+}
+
+.options-container select {
+  width: 100%;
+}
+
+.add-category-button,
 .priority-button,
 .submit-button {
   all: unset;
