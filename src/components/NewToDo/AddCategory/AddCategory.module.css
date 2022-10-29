@@ -1,15 +1,21 @@
 .add-category-container {
   height: 100%;
   width: 100%;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #010101;
+  background-color: #010101d6;
   color: #ffffff;
+}
+
+.add-category-content {
+  background-color: #3c3c3c;
+  padding: 15px;
+  max-width: 80%;
 }
 
 .add-category-section {

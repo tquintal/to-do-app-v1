@@ -7,10 +7,10 @@ import AddCategory from './AddCategory/AddCategory';
 function NewToDo() {
     const [toDo, setToDo] = useState('');
     const [category, setCategory] = useState('None');
-    const [addCategoryView, setAddCategoryView] = useState(false);
     const [highPriority, setHighPriority] = useState(false);
 
     const storageContext = useContext(StorageContext);
+    const addCategoryView = storageContext.addCategoryView;
 
     const onChangeHandler = event => {
         setToDo(event.target.value);
@@ -21,7 +21,7 @@ function NewToDo() {
     };
 
     const onShowAddCategoryHandler = () => {
-        setAddCategoryView(prevState => !prevState);
+        storageContext.onShowAddCategoryView();
     };
 
     const onAddCategoryHandler = newCategory => {
@@ -59,7 +59,7 @@ function NewToDo() {
             </select>
             <div className={classes['options-container']}>
                 <InputButton onClick={onShowAddCategoryHandler} className={classes['add-category-button']}>New category</InputButton>
-                {addCategoryView && <AddCategory showAddCategory={onShowAddCategoryHandler} addCategory={onAddCategoryHandler}>Hello world 🤓</AddCategory>}
+                {addCategoryView && <AddCategory showAddCategory={onShowAddCategoryHandler} addCategory={onAddCategoryHandler} />}
                 <InputButton onClick={onPriorityHandler} className={`${classes['priority-button']} ${highPriority && classes['priority-button-active']}`}>❗</InputButton>
                 <InputButton type='submit' className={classes['submit-button']}>Add to do</InputButton>
             </div>

@@ -26,11 +26,13 @@ main {
   gap: 5px;
   padding-top: 50px;
   padding-bottom: 92px;
+  width: 325px;
 }
 
 @media only screen and (max-width: 800px) {
   .section-1 {
     padding: 50px;
     padding-bottom: 92px;
+    width: 100%;
   }
 }

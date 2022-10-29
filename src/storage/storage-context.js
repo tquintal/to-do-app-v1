@@ -3,8 +3,10 @@ import React, { useEffect, useState } from 'react';
 const StorageContext = React.createContext({
     toDos: [],
     categories: [],
+    addCategoryView: null,
     onAdd: () => { },
     onCategoryAdd: () => { },
+    onShowAddCategoryView: () => { },
     onComplete: () => { },
     onEdit: () => { },
     onDelete: () => { },
@@ -15,6 +17,7 @@ const StorageContext = React.createContext({
 export const StorageContextProvider = props => {
     const [toDos, setToDos] = useState(JSON.parse(localStorage.getItem('ToDos')) || []);
     const [categories, setCategories] = useState(JSON.parse(localStorage.getItem('Categories')) || ['none']);
+    const [addCategoryView, setAddCategoryView] = useState(false);
 
     // Load test values
     const loadTestToDosHandler = testToDos => {
@@ -33,7 +36,7 @@ export const StorageContextProvider = props => {
 
     // CLEARS TODOS ON VERSION CHANGE
     useEffect(() => {
-        const appVersion = '1.0.14';
+        const appVersion = '1.0.15';
         const storageVersion = JSON.parse(localStorage.getItem('Version')) || '';
         if (storageVersion !== appVersion) {
             localStorage.removeItem('ToDos');
@@ -50,19 +53,28 @@ export const StorageContextProvider = props => {
             const updatedToDos = [...prevToDos];
             updatedToDos.push({ id: Math.random().toString(), content: toDo, created: new Date(), category: category, highPriority: highPriority, completed: false });
             localStorage.setItem('ToDos', JSON.stringify(updatedToDos));
+            console.log('To do added ✅');
             return updatedToDos;
         });
     };
 
+    // SHOW CATEGORY VIEW
+    const showAddCategoryView = () => {
+        setAddCategoryView(prevState => !prevState);
+    };
+
     // NEW CATEGORY
-    const addCategoryHandler = (newCategory) => {
-        setCategories(prevCat => {
-            const updatedCat = [...prevCat];
-            updatedCat.push(newCategory);
-            localStorage.setItem('Categories', JSON.stringify(updatedCat));
-            console.log(updatedCat, localStorage.getItem('Categories'));
-            return updatedCat;
-        });
+    const addCategoryHandler = newCategory => {
+        if (newCategory.trim().length > 0) {
+            setCategories(prevCat => {
+                const updatedCat = [...prevCat];
+                updatedCat.push(newCategory);
+                localStorage.setItem('Categories', JSON.stringify(updatedCat));
+                console.log('Category added ✅');
+                return updatedCat;
+            });
+            showAddCategoryView();
+        } else alert(`⚠️ Can't be empty ⚠️`);
     };
 
     // COMPLETE TODO
@@ -128,8 +140,10 @@ export const StorageContextProvider = props => {
             value={{
                 toDos: toDos,
                 categories: categories,
+                addCategoryView: addCategoryView,
                 onAdd: addHandler,
                 onCategoryAdd: addCategoryHandler,
+                onShowAddCategoryView: showAddCategoryView,
                 onComplete: completeHandler,
                 onEdit: editHandler,
                 onDelete: deleteHandler,
