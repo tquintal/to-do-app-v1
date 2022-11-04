@@ -22,8 +22,11 @@ My recent react learning playground 🤓
 - ~~Sort by date added~~
 - ~~Build a priority system~~
 - ~~Sort by priority~~
+- ~~Build a category system~~
+- ~~Group by category~~
+- ~~Import/Export~~
+- Export file without dependencies
 - Sort by custom order
-- Import/~~Export~~
-- Design/layout rebuild
-- Build a category system
-- Group by category
+- Toggle 'priority' on already added todo
+- Full design/layout rebuild (with animations)
+- Improve import validation

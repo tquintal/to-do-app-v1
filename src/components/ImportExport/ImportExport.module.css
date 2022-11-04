@@ -1,7 +1,14 @@
 .import-export-container {
   display: flex;
+  flex-direction: column;
   gap: 5px;
   padding-top: 5px;
+  width: 100%;
+}
+
+.import-container {
+  background: #3c3c3c;
+  padding: 10px;
 }
 
 .import-export-container button,
@@ -13,5 +20,4 @@
   background: #3c3c3c;
   padding: 10px;
   cursor: pointer;
-  width: 100%;
 }

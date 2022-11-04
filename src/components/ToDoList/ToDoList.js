@@ -63,7 +63,7 @@ function ToDoList() {
     };
 
     const onLoadTestToDosHandler = () => {
-        storageContext.onLoadTestToDos(testToDos);
+        storageContext.onLoadToDos(testToDos);
     };
 
     const HighPriority = props => {
@@ -72,10 +72,6 @@ function ToDoList() {
 
     const DeleteButton = props => {
         return <button onClick={onDeleteHandler} title='delete-button' todoid={props.todoid} className={classes['delete-button']}>Delete</button>;
-    };
-
-    const logToDo = toDo => {
-        return console.table(toDo);
     };
 
     return (
@@ -111,7 +107,7 @@ function ToDoList() {
                 <ul className={classes['to-do-list-container']}>
                     {
                         storageContext.toDos.length > 0 && getSortedToDos().filter(toDo => !toDo.completed).map(toDo =>
-                            <li key={toDo.id} className={classes['to-do-list-item-container']} onClick={() => logToDo(toDo)}>
+                            <li key={toDo.id} className={classes['to-do-list-item-container']}>
                                 <div className={classes['to-do-list-item-left']}>
                                     <input type='checkbox' onChange={onChangeHandler} todoid={toDo.id} checked={toDo.completed} title='checkbox' />
                                     <input type='text' title='todo' defaultValue={toDo.content} onChange={onInputChangeHandler} todoid={toDo.id} className={classes['edit-todo-input']} />

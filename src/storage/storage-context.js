@@ -11,7 +11,7 @@ const StorageContext = React.createContext({
     onEdit: () => { },
     onDelete: () => { },
     onDeleteAll: () => { },
-    onLoadTestToDos: () => { }
+    onLoadToDos: () => { }
 });
 
 export const StorageContextProvider = props => {
@@ -19,8 +19,14 @@ export const StorageContextProvider = props => {
     const [categories, setCategories] = useState(JSON.parse(localStorage.getItem('Categories')) || ['none']);
     const [addCategoryView, setAddCategoryView] = useState(false);
 
-    // Load test values
-    const loadTestToDosHandler = testToDos => {
+    // LOAD
+    const loadToDosHandler = testToDos => {
+        let updatedCategories = [];
+        for (let i = 0; i < testToDos.length; i++) {
+            if (!updatedCategories.find(el => el === testToDos[i].category))
+                updatedCategories.push(testToDos[i].category);
+        };
+
         setToDos(() => {
             const updatedToDos = testToDos.concat();
             localStorage.setItem('ToDos', JSON.stringify(updatedToDos));
@@ -28,9 +34,8 @@ export const StorageContextProvider = props => {
         });
 
         setCategories(() => {
-            const updatedCat = ['none', 'one', 'two', 'three', 'four'];
-            localStorage.setItem('Categories', JSON.stringify(updatedCat));
-            return updatedCat;
+            localStorage.setItem('Categories', JSON.stringify(updatedCategories));
+            return updatedCategories;
         });
     };
 
@@ -148,7 +153,7 @@ export const StorageContextProvider = props => {
                 onEdit: editHandler,
                 onDelete: deleteHandler,
                 onDeleteAll: deleteAllHander,
-                onLoadTestToDos: loadTestToDosHandler
+                onLoadToDos: loadToDosHandler
             }}
         >
             {props.children}
