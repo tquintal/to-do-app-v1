@@ -25,8 +25,8 @@ My recent react learning playground 🤓
 - ~~Build a category system~~
 - ~~Group by category~~
 - ~~Import/Export~~
+- ~~Toggle 'priority' on already added todo~~ (Completed in V2)
+- ~~Full design/layout rebuild (with animations)~~ (Completed in V2)
 - Export file without dependencies
 - Sort by custom order
-- Toggle 'priority' on already added todo
-- Full design/layout rebuild (with animations)
 - Improve import validation
