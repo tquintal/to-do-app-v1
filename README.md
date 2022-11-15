@@ -1,18 +1,6 @@
-# To Do React App
+# [Check here](github.com/tquintal/to-do-app-v2)
 
-My recent react learning playground 🤓
-
-## Learning goals:
-
-- React basics
-- React state and events
-- Rendering lists and conditional content
-- Styling react components
-- Build reusable components
-- Build dynamic components - handle data through props
-- Context API
-
-## Future goals:
+## 👆 Previous achievements:
 
 - ~~Delete option~~
 - ~~"Completed" list~~
