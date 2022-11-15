@@ -1,4 +1,4 @@
-# [Check here](github.com/tquintal/to-do-app-v2)
+# [Check here]("https://github.com/tquintal/to-do-app-v2/")
 
 ## 👆 Previous achievements:
 
