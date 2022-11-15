@@ -4,7 +4,7 @@ import { FiGithub } from 'react-icons/fi';
 
 function Footer() {
     return (
-        <a href='https://github.com/tquintal/' target='_blank' rel='noreferrer' className={classes['footer']}><FiGithub /> tquintal</a>
+        <a href='https://to-do-app-tquintal.vercel.app/' target='_blank' rel='noreferrer' className={classes['footer']}><FiGithub /> V2</a>
     );
 };
 
